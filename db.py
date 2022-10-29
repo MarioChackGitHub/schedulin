@@ -17,9 +17,32 @@ db = create_engine(
     connect_args = {'connect_timeout': 10})
 conn = db.connect()
 
-databases = conn.execute("""
-    SHOW DATABASES;
-    """)
+# databases = conn.execute("""
+#     SHOW DATABASES;
+#     """)
 
-for db in databases.fetchall():
-    print(db)
+# for db in databases.fetchall():
+#     print(db)
+
+
+def crear_tabla_Reservation():
+    conn.execute("""
+    CREATE TABLE RESERVATION(
+	ID INT,
+	ID_RECURSO INT,
+	ID_VECINO INT,
+    STATUS BOOL,
+    STAR_TIME DATETIME,
+    END_TIME DATETIME,
+    NUM_PAX INT);
+        """
+    )
+    
+
+def crear_tabla_Vecino():
+    conn.execute("""
+    CREATE TABLE VECINO(
+	NAME VARCHAR,
+	EMAIL VARCHAR);
+        """
+    )
